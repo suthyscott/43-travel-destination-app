@@ -1,0 +1,5 @@
+#dest-display-container {
+    width: 60%;
+    height: 90vh;
+    border: solid 5px red;
+}
