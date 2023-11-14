@@ -1,5 +1,5 @@
 #dest-display-container {
     width: 60%;
-    height: 90vh;
+    height: auto;
     border: solid 5px red;
 }

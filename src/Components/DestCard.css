@@ -1,0 +1,8 @@
+.dest-card-container {
+    border: green solid 2px;
+}
+
+.dest-card-container img {
+    width: 90%;
+    height: 60%;
+}

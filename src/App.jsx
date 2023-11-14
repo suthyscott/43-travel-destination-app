@@ -18,18 +18,23 @@ function App() {
   }
 
   useEffect(() => {
-    console.log('useEffect')
+    // console.log('useEffect')
     getAllDestinations()
   }, [])
-  // getAllDestinations()
+
+  const deleteDestination = (destId) => {
+    axios.delete(`http://localhost:4545/api/destinations/${destId}?apiKey=${process.env.REACT_APP_API_KEY}`)
+      .then(res => getAllDestinations())
+      .catch(err => console.log(err))
+  }
   
-  console.log("Component renders", destinations)
+  // console.log("Component renders", destinations)
   return (
     <div className="App">
       <Header/>
       <main>
         <AddDest/>
-        <DestDisplay destinations={destinations}/>
+        <DestDisplay destinations={destinations} deleteDestination={deleteDestination}/>
       </main>
     </div>
   );
