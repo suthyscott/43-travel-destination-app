@@ -1,8 +1,13 @@
 import './DestDisplay.css'
+import DestCard from './DestCard'
 
-const DestDisplay = () => {
+const DestDisplay = ({destinations}) => {
     return (
-        <div id="dest-display-container">DestDisplay.jsx</div>
+        <div id="dest-display-container">
+            {destinations.map((dest, index) => {
+                return <DestCard dest={dest}/>
+            })}
+        </div>
     )
 }
 

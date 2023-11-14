@@ -1,6 +1,8 @@
-const DestCard = () => {
+const DestCard = ({dest}) => {
     return (
-        <div>DestCard.jsx</div>
+        <div>
+            {dest.name}
+        </div>
     )
 }
 
