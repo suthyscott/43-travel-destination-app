@@ -27,13 +27,19 @@ function App() {
       .then(res => getAllDestinations())
       .catch(err => console.log(err))
   }
+
+  const addDestination = (newDestObj) => {
+    axios.post(`http://localhost:4545/api/destinations?apiKey=${process.env.REACT_APP_API_KEY}`, newDestObj)
+      .then(res => getAllDestinations())
+      .catch(err => console.log(err))
+  }
   
   // console.log("Component renders", destinations)
   return (
     <div className="App">
       <Header/>
       <main>
-        <AddDest/>
+        <AddDest addDestination={addDestination}/>
         <DestDisplay destinations={destinations} deleteDestination={deleteDestination}/>
       </main>
     </div>
