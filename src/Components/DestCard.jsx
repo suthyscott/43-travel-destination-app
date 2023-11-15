@@ -1,14 +1,45 @@
-import './DestCard.css'
+import "./DestCard.css"
+import { useState } from "react"
 
 const DestCard = ({ dest, deleteDestination }) => {
-    return (
-        <div className='dest-card-container'>
+    const [editing, setEditing] = useState(false)
+    const [name, setName] = useState(dest.name)
+    const [notes, setNotes] = useState(dest.notes)
+    const [imageURL, setImageURL] = useState(dest.imageURL)
+    const [international, setInternational] = useState(dest.international)
+
+    // 7 === '7' ? console.log(true) : console.log(false)
+
+    return !editing ? (
+        <div className="dest-card-container">
             <h2>Destination: {dest.name}</h2>
-            <p>Interational: {dest.international ? "yes" : 'no'}</p>
+            <p>Interational: {dest.international ? "yes" : "no"}</p>
             <p>{dest.notes}</p>
-            <img  src={dest.imageURL}/>
+            <img src={dest.imageURL} />
             <button onClick={() => deleteDestination(dest.id)}>Delete</button>
+            <button onClick={() => setEditing(true)}>Edit</button>
         </div>
+    ) : (
+        <form>
+            <input placeholder="name" value={name} onChange={e => setName(e.target)} />
+            <input
+                placeholder="notes about your destination"
+                onChange={e => setNotes(e.target.value)}
+                value={notes}
+            />
+            <input
+                placeholder="Image URL"
+                onChange={e => setImageURL(e.target.value)}
+                value={imageURL}
+            />
+            <input
+                type="checkbox"
+                checked={international}
+                onChange={() => setInternational(!international)}
+            />
+            <button>Add Destination</button>
+            <button onClick={() => setEditing(false)}>Cancel</button>
+        </form>
     )
 }
 
