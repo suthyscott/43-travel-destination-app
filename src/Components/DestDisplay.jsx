@@ -1,7 +1,7 @@
 import "./DestDisplay.css"
 import DestCard from "./DestCard"
 
-const DestDisplay = ({ destinations, deleteDestination }) => {
+const DestDisplay = ({ destinations, deleteDestination, editDestination }) => {
     return (
         <div id="dest-display-container">
             {destinations.map((dest, index) => {
@@ -10,6 +10,7 @@ const DestDisplay = ({ destinations, deleteDestination }) => {
                         key={dest.id}
                         dest={dest}
                         deleteDestination={deleteDestination}
+                        editDestination={editDestination}
                     />
                 )
             })}

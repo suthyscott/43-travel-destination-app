@@ -33,6 +33,12 @@ function App() {
       .then(res => getAllDestinations())
       .catch(err => console.log(err))
   }
+
+  const editDestination = (destId, updatedObj) => {
+    axios.put(`http://localhost:4545/api/destination/${destId}?apiKey=${process.env.REACT_APP_API_KEY}`, updatedObj)
+      .then(res => getAllDestinations())
+      .catch(err => console.log(err))
+  }
   
   // console.log("Component renders", destinations)
   return (
@@ -40,7 +46,7 @@ function App() {
       <Header/>
       <main>
         <AddDest addDestination={addDestination}/>
-        <DestDisplay destinations={destinations} deleteDestination={deleteDestination}/>
+        <DestDisplay destinations={destinations} deleteDestination={deleteDestination} editDestination={editDestination}/>
       </main>
     </div>
   );

@@ -1,7 +1,7 @@
 import "./DestCard.css"
 import { useState } from "react"
 
-const DestCard = ({ dest, deleteDestination }) => {
+const DestCard = ({ dest, deleteDestination, editDestination }) => {
     const [editing, setEditing] = useState(false)
     const [name, setName] = useState(dest.name)
     const [notes, setNotes] = useState(dest.notes)
@@ -9,6 +9,18 @@ const DestCard = ({ dest, deleteDestination }) => {
     const [international, setInternational] = useState(dest.international)
 
     // 7 === '7' ? console.log(true) : console.log(false)
+
+    const handleSubmit = e => {
+        e.preventDefault()
+        const editedData = {
+            name, 
+            notes, 
+            imageURL,
+            international
+        }
+        editDestination(dest.id, editedData)
+        setEditing(false)
+    }
 
     return !editing ? (
         <div className="dest-card-container">
@@ -20,8 +32,8 @@ const DestCard = ({ dest, deleteDestination }) => {
             <button onClick={() => setEditing(true)}>Edit</button>
         </div>
     ) : (
-        <form>
-            <input placeholder="name" value={name} onChange={e => setName(e.target)} />
+        <form onSubmit={(e) => handleSubmit(e)}>
+            <input placeholder="name" value={name} onChange={e => setName(e.target.value)} />
             <input
                 placeholder="notes about your destination"
                 onChange={e => setNotes(e.target.value)}
@@ -37,7 +49,7 @@ const DestCard = ({ dest, deleteDestination }) => {
                 checked={international}
                 onChange={() => setInternational(!international)}
             />
-            <button>Add Destination</button>
+            <button>Save</button>
             <button onClick={() => setEditing(false)}>Cancel</button>
         </form>
     )
