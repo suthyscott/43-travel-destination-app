@@ -8,6 +8,9 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import Root from "./Root"
 import ErrorPage from "./Components/ErrorPage"
 import Home from "./Components/Home"
+import AddDest from "./Components/AddDest"
+import Details from "./Components/Details"
+import { getAllDestinations as destinationsLoader } from "./Components/Home"
 
 const router = createBrowserRouter([
     {
@@ -17,7 +20,16 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/home',
-                element: <Home/>
+                element: <Home/>,
+                loader: destinationsLoader
+            },
+            {
+                path: '/addDest',
+                element: <AddDest/>
+            },
+            {
+                path: '/details/:id',
+                element: <Details/>
             }
         ]
     }

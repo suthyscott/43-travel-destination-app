@@ -9,7 +9,7 @@ import { useState, useEffect } from 'react';
 import {Routes, Route} from 'react-router-dom'
 
 function App() {
-  // const [destinations, setDestinations] = useState([])
+  const [destinations, setDestinations] = useState([])
 
   // const getAllDestinations = () => {
   //   axios.get(`http://localhost:4545/api/destinations?apiKey=${process.env.REACT_APP_API_KEY}`)
