@@ -11,6 +11,7 @@ import Home from "./Components/Home"
 import AddDest from "./Components/AddDest"
 import Details from "./Components/Details"
 import { getAllDestinations as destinationsLoader } from "./Components/Home"
+import { getDestinationDetails as destinationLoader } from "./Components/Details"
 
 const router = createBrowserRouter([
     {
@@ -29,7 +30,8 @@ const router = createBrowserRouter([
             },
             {
                 path: '/details/:id',
-                element: <Details/>
+                element: <Details/>,
+                loader: destinationLoader
             }
         ]
     }

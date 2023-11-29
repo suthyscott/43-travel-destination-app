@@ -1,7 +1,9 @@
 import "./DestCard.css"
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 const DestCard = ({ dest, deleteDestination, editDestination }) => {
+    const navigate = useNavigate()
     const [editing, setEditing] = useState(false)
     const [name, setName] = useState(dest.name)
     const [notes, setNotes] = useState(dest.notes)
@@ -26,8 +28,9 @@ const DestCard = ({ dest, deleteDestination, editDestination }) => {
         <div className="dest-card-container">
             <h2>Destination: {dest.name}</h2>
             <img src={dest.imageURL} />
-            <button onClick={() => deleteDestination(dest.id)}>Delete</button>
-            <button onClick={() => setEditing(true)}>Edit</button>
+            <button onClick={() => navigate(`/details/${dest.id}`)}>View Details</button>
+            {/* <button onClick={() => deleteDestination(dest.id)}>Delete</button>
+            <button onClick={() => setEditing(true)}>Edit</button> */}
         </div>
     ) : (
         <form onSubmit={(e) => handleSubmit(e)}>
