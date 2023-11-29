@@ -15,6 +15,7 @@ const Home = () => {
   
   return (
     <div>
+      <h1>Here are your destinations</h1>
       <DestDisplay destinations={destinations}/>
     </div>
   )
